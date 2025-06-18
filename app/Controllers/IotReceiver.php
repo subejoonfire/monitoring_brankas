@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\DataAnggotaModel;
-use App\Models\RiwayatBerhasilModel;
+use App\Models\AnggotaModel;
+use App\Models\RiwayatBerhasilRFIDModel;
 use App\Models\RiwayatGagalModel;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -22,12 +22,12 @@ class IotReceiver extends ResourceController
             return $this->fail('Tag dan foto wajib diisi', 400);
         }
 
-        $anggotaModel = new DataAnggotaModel();
+        $anggotaModel = new AnggotaModel();
         $dataAnggota = $anggotaModel->where('tag', $tag)->first();
 
         if ($dataAnggota) {
             // Masuk ke Riwayat Berhasil
-            $riwayatModel = new RiwayatBerhasilModel();
+            $riwayatModel = new RiwayatBerhasilRFIDModel();
             $riwayatModel->insert([
                 'id_anggota'    => $dataAnggota['id_anggota'],
                 'tanggal_akses' => $tanggal,

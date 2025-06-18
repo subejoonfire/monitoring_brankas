@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\DataAnggotaModel;
-use App\Models\RiwayatBerhasilModel;
+use App\Models\AnggotaModel;
+use App\Models\RiwayatBerhasilRFIDModel;
 use App\Models\RiwayatGagalModel;
 
 class Dashboard extends BaseController
 {
     public function index()
     {
-        $anggota  = new DataAnggotaModel();
-        $berhasil = new RiwayatBerhasilModel();
+        $anggota  = new AnggotaModel();
+        $berhasil = new RiwayatBerhasilRFIDModel();
         $gagal    = new RiwayatGagalModel();
 
         $data = [
