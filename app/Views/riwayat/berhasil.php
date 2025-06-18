@@ -10,11 +10,9 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Tanggal</th>
                 <th>Waktu</th>
-                <th>ID Anggota</th>
+                <th>Tipe</th>
                 <th>Nama</th>
-                <th>Foto</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -23,16 +21,10 @@
                 <tr>
                     <td><?= $i + 1 ?></td>
                     <td><?= esc($r['tanggal_akses']) ?></td>
-                    <td><?= esc($r['waktu_akses']) ?></td>
-                    <td><?= esc($r['id_anggota']) ?></td>
-                    <td><?= esc($r['nama_anggota']) ?></td>
+                    <td><?= esc($r['tipe']) ?></td>
+                    <td><?= esc($r['nama']) ?></td>
                     <td>
-                        <img src="<?= base_url('assets/foto/' . $r['foto']) ?>" class="img-thumbnail"
-                            style="width:60px;cursor:pointer" data-bs-toggle="modal" data-bs-target="#fotoModal"
-                            data-img="<?= base_url('assets/foto/' . $r['foto']) ?>">
-                    </td>
-                    <td>
-                        <a href="<?= base_url("riwayat/berhasil/delete/{$r['id_riwayat_berhasil']}") ?>"
+                        <a href="<?= isset($r['id']) ? base_url("riwayat/berhasil/delete/{$r['id']}") : NULL ?>"
                             class="btn btn-sm btn-danger" onclick="return confirm('Hapus riwayat?')">Hapus</a>
                     </td>
                 </tr>

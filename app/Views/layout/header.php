@@ -31,8 +31,12 @@
                             href="<?= base_url('anggota') ?>">Data Anggota</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link<?= service('uri')->getSegment(1) == 'riwayat/berhasil' ? ' active' : '' ?>"
-                            href="<?= base_url('riwayat/berhasil') ?>">Riwayat Berhasil</a>
+                        <a class="nav-link<?= service('uri')->getSegment(1) == 'riwayat/berhasil/rfid' ? ' active' : '' ?>"
+                            href="<?= base_url('riwayat/berhasil/rfid') ?>">Riwayat Berhasil RFID</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link<?= service('uri')->getSegment(1) == 'riwayat/berhasil/keypad' ? ' active' : '' ?>"
+                            href="<?= base_url('riwayat/berhasil/keypad') ?>">Riwayat Berhasil Keypad</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link<?= service('uri')->getSegment(1) == 'riwayat/gagal' ? ' active' : '' ?>"

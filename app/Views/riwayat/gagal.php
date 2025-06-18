@@ -2,7 +2,7 @@
 <h3 class="mb-3">Riwayat Akses Berhasil</h3>
 
 <?php if (session('success')): ?>
-    <div class="alert alert-success"><?= session('success') ?></div>
+<div class="alert alert-success"><?= session('success') ?></div>
 <?php endif ?>
 
 <div class="table-responsive">
@@ -11,31 +11,27 @@
             <tr>
                 <th>#</th>
                 <th>Tanggal</th>
-                <th>Waktu</th>
-                <th>ID Anggota</th>
-                <th>Nama</th>
+                <th>Key/Tag</th>
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($rows as $i => $r): ?>
-                <tr>
-                    <td><?= $i + 1 ?></td>
-                    <td><?= esc($r['tanggal_akses']) ?></td>
-                    <td><?= esc($r['waktu_akses']) ?></td>
-                    <td><?= esc($r['id_anggota']) ?></td>
-                    <td><?= esc($r['nama_anggota']) ?></td>
-                    <td>
-                        <img src="<?= base_url('assets/foto/' . $r['foto']) ?>" class="img-thumbnail"
-                            style="width:60px;cursor:pointer" data-bs-toggle="modal" data-bs-target="#fotoModal"
-                            data-img="<?= base_url('assets/foto/' . $r['foto']) ?>">
-                    </td>
-                    <td>
-                        <a href="<?= base_url("riwayat/berhasil/delete/{$r['id_riwayat_berhasil']}") ?>"
-                            class="btn btn-sm btn-danger" onclick="return confirm('Hapus riwayat?')">Hapus</a>
-                    </td>
-                </tr>
+            <tr>
+                <td><?= $i + 1 ?></td>
+                <td><?= esc($r['tanggal_akses']) ?></td>
+                <td><?= esc($r['key']) ?></td>
+                <td>
+                    <img src="<?= base_url('assets/foto/' . $r['foto']) ?>" class="img-thumbnail"
+                        style="width:60px;cursor:pointer" data-bs-toggle="modal" data-bs-target="#fotoModal"
+                        data-img="<?= base_url('assets/foto/' . $r['foto']) ?>">
+                </td>
+                <td>
+                    <a href="<?= base_url("riwayat/berhasil/delete/{$r['id']}") ?>" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Hapus riwayat?')">Hapus</a>
+                </td>
+            </tr>
             <?php endforeach ?>
         </tbody>
     </table>
@@ -53,12 +49,12 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const fotoModal = document.getElementById('fotoModal');
-        fotoModal.addEventListener('show.bs.modal', event => {
-            const img = event.relatedTarget.getAttribute('data-img');
-            fotoModal.querySelector('#fotoFull').src = img;
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    const fotoModal = document.getElementById('fotoModal');
+    fotoModal.addEventListener('show.bs.modal', event => {
+        const img = event.relatedTarget.getAttribute('data-img');
+        fotoModal.querySelector('#fotoFull').src = img;
     });
+});
 </script>
 <?= view('layout/footer') ?>
